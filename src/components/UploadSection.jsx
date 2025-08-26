@@ -19,12 +19,13 @@ function UploadSection() {
     formData.append("pdf", file)
 
     try {
-      const response = await fetch("http://localhost:5173/#upload", {
-        method: "Post",
+      const response = await fetch("http://localhost:5001/upload", {
+        method: "POST",
         body: formData,
       })
       const blob = await response.blob()
       const url = URL.createObjectURL(blob)
+      console.log("Generated URL:", url)
       setSignedPdfUrl(url)
     } catch (error) {
       console.error("Error uploading the PDF:", error)
@@ -41,8 +42,7 @@ function UploadSection() {
           <button onClick={handleUpload} className="upload-button">Upload PDF</button>
           {signedPdfUrl && (
             <div className="pdf-viewer">
-              <h4>Signed PDF</h4>
-              <iframe src={signedPdfUrl} title='Signed PDF' className='pdf-frame' frameborder="0"></iframe>
+              <iframe src={signedPdfUrl} title='Signed PDF' className='pdf-frame'></iframe>
             </div>
           )}
         </div>

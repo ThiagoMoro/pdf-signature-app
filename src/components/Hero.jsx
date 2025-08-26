@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <section className="hero">
       <div className="container">
-        <h2 className="hero-title">Sign your PDF</h2>
+        <h2 className="hero-title">You can upload your PDF file and view it afterwards.</h2>
       </div>
     </section>
   )
